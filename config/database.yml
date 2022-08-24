@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: api_chile_development
+
+test:
+  <<: *default
+  database: api_chile_test
+
+production:
+  <<: *default
+  database: api_chile_production
+  username: api_chile
+  password: <%= ENV['API_CHILE_DATABASE_PASSWORD'] %>
